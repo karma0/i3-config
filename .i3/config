@@ -23,10 +23,8 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # chose a FreeType font, such as:
 #font pango:DejaVu Sans Mono 10
 
-#bindsym $alt+Control+Shift+a exec xkbcomp -w 0 ~/.xkbmap.qwerty $DISPLAY
-#bindsym $alt+Control+a exec xkbcomp -w 0 ~/.xkbmap $DISPLAY
-bindsym $alt+Control+Shift+a exec setxkbmap us -option caps:swapescape -option numpad:shift3 -option keypad:atm
-bindsym $alt+Control+a exec setxkbmap -layout us -variant workman-intl -option caps:swapescape -option numpad:shift3 -option keypad:atm
+bindsym $alt+Control+Shift+a exec xkbcomp -w 0 ~/.xkbmap.qwerty $DISPLAY
+bindsym $alt+Control+a exec xkbcomp -w 0 ~/.xkbmap $DISPLAY
 
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
