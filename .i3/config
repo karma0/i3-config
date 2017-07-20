@@ -261,5 +261,5 @@ exec pidgin
 exec evolution
 
 # Tap on touchpad
-#exec xinput set-prop 13 279 1
+exec xinput set-prop 11 287 1
 
