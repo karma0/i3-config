@@ -32,7 +32,7 @@ status.register("mem_bar",
 # This would also display a desktop notification (via dbus) if the percentage
 # goes below 5 percent while discharging. The block will also color RED.
 status.register("battery",
-  battery_ident="BAT0",
+  battery_ident="ALL",
   #format="{status}/{consumption:.2f}W {percentage:.2f}% [{percentage_design:.2f}%] {remaining:%E%hh:%Mm}",
   format="{status}/{percentage:.2f}% {remaining:%E%hh:%Mm}",
   alert=True,
