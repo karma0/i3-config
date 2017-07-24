@@ -263,3 +263,5 @@ exec evolution
 # Tap on touchpad
 exec xinput set-prop 11 287 1
 
+# Composite
+exec compton -b
