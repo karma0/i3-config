@@ -1,0 +1,152 @@
+{
+  "layouts": {
+
+    "laptop": [
+      "clock",
+      "mem_bar",
+      "battery",
+      "load",
+      "cpu_usage_graph",
+      "disk",
+      "runwatch",
+      "alsa",
+      "now_playing",
+      "pomodoro"
+    ],
+
+    "bottom_left": [
+      "alsa",
+      "pomodoro"
+    ],
+
+    "bottom_right": [
+      "clock",
+      "weather",
+      "pomodoro"
+    ],
+
+    "top_left": [
+      "load",
+      "temp",
+      "cpu_usage_graph",
+      "mem_bar",
+      "disk",
+      "runwatch",
+      "network",
+      "wireless",
+      "network_graph",
+      "network_traffic"
+    ],
+
+    "top_right": [
+      "clock",
+      "weather",
+      "load",
+      "temp",
+      "runwatch",
+      "network",
+      "disk",
+      "mem_bar",
+      "network_graph",
+      "network_traffic",
+      "alsa",
+      "pomodoro"
+    ]
+
+  },
+  "config": {
+
+    "clock": {
+      "color": "#E6E1CF",
+      "format": "%a %-d %b %X W%V"
+    },
+
+    "mem_bar": {
+      "color": "#B8CC52",
+      "alert_color": "#FF3333",
+      "multi_colors": "true",
+      "format": "^{used_mem_bar}"
+    },
+
+    "battery": {
+      "battery_ident": "ALL",
+      "format": "{status}/{percentage:.2f}% {remaining:%E%hh:%Mm}",
+      "alert": true,
+      "alert_percentage": 5,
+      "color": "#FFEE99",
+      "full_color": "#B8CC52",
+      "charging_color": "#E6E1CF",
+      "critical_color": "#ff3333",
+      "not_present_color": "#FFEE99",
+      "status": {
+        "DIS": "↓",
+        "CHR": "↑",
+        "FULL": "="
+      }
+    },
+
+    "load": {
+      "color": "#B8CC52",
+      "critical_color": "#FF3333"
+    },
+
+    "cpu_usage_graph": {
+      "start_color": "#B8CC52",
+      "end_color": "#FF3333"
+    },
+
+    "disk": {
+      "critical_color": "#FF3333",
+      "color": "#B8CC52",
+      "path": "/",
+      "format": "{used}/{total}G [{avail}G]"
+    },
+
+    "runwatch": {
+      "color_up": "#B8CC52",
+      "color_down": "#FF3333",
+      "name": "DHCP",
+      "path": "/run/dhcpcd-*.pid"
+    },
+
+    "alsa": {
+      "color": "#E6E1CF",
+      "color_muted": "#FF3333",
+      "card": 0,
+      "format": "♪{volume}%"
+    },
+
+    "now_playing": {
+      "format": "{title}{status}{artist}",
+      "status": {
+        "pause": "▷",
+        "play": "▶",
+        "stop": "◾"
+      }
+    },
+
+    "pomodoro": {
+      "sound": "/usr/share/webkitgtk-3.0/resources/audio/Composite.wav",
+      "pomodoro_duration": 1500,
+      "break_duration": 300,
+      "long_break_duration": 900,
+      "short_break_count": 3
+    },
+
+    "weather": {
+      "location_code": "80203",
+      "format": "Denver {current_temp}",
+      "units": "imperial",
+      "interval": 300
+    },
+
+    "temp": {
+      "format": "{temp:.0f}°C"
+    },
+
+    "network": {
+      "format_up": "{v4cidr}"
+    }
+
+  }
+}

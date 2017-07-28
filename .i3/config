@@ -220,7 +220,7 @@ bindsym XF86AudioNext exec ncmpcpp next
 #}
 
 bar {
-  status_command python3 ~/.i3/pystatus.py #i3status #~/bin/i3status.sh
+  status_command ~/.i3/status.py laptop #i3status #~/bin/i3status.sh
   position bottom
   tray_output primary
   #workspace_buttons yes # Default: yes
