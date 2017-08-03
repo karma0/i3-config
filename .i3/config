@@ -10,9 +10,11 @@ set $alt Mod1
 #set $left_monitor DVI-I-1
 #set $right_monitor DVI-D-0
 
-new_window 1pixel
+new_window pixel 1
+hide_edge_borders smart
 focus_follows_mouse no
 workspace_auto_back_and_forth yes
+popup_during_fullscreen smart
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -22,6 +24,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 #font pango:DejaVu Sans Mono 10
+font pango:Source Code Pro Medium 7
 
 bindsym $alt+Control+Shift+a exec xkbcomp -w 0 ~/.xkbmap.qwerty $DISPLAY
 #bindsym $alt+Control+a exec xkbcomp -w 0 ~/.xkbmap $DISPLAY
@@ -111,16 +114,16 @@ bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym Mod1+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f
 
 # switch to workspace
-bindsym $win+1 workspace 1
-bindsym $win+2 workspace 2
-bindsym $win+3 workspace 3
-bindsym $win+4 workspace 4
-bindsym $win+5 workspace 5
-bindsym $win+6 workspace 6
-bindsym $win+7 workspace 7
-bindsym $win+8 workspace 8
-bindsym $win+9 workspace 9
-bindsym $win+0 workspace 10
+bindsym $win+1 workspace 1:１
+bindsym $win+2 workspace 2:２
+bindsym $win+3 workspace 3:３
+bindsym $win+4 workspace 4:４
+bindsym $win+5 workspace 5:５
+bindsym $win+6 workspace 6:６
+bindsym $win+7 workspace 7:７
+bindsym $win+8 workspace 8:８
+bindsym $win+9 workspace 9:９
+bindsym $win+0 workspace 10:０
 
 # move focused container to workspace
 bindsym $win+Shift+1 move container to workspace 1
@@ -137,6 +140,10 @@ bindsym $win+Shift+0 move container to workspace 10
 # move workspace to other monitors
 bindsym $win+Shift+Control+Left move workspace to output left
 bindsym $win+Shift+Control+Right move workspace to output right
+
+# next/prev workspace
+bindsym $win+Control+Right workspace next
+bindsym $win+Control+Left workspace prev
 
 # reload the configuration file
 bindsym $win+Shift+c reload
@@ -223,16 +230,16 @@ bar {
   status_command ~/.i3/status.py laptop #i3status #~/bin/i3status.sh
   position bottom
   tray_output primary
-  #workspace_buttons yes # Default: yes
+  strip_workspace_numbers yes
 }
-
-#for_window [class="lilyterm"] -1pixel
 
 # Applications
 bindsym $alt+Control+f exec firefox
 bindsym $alt+Control+c exec chromium
 bindsym $alt+Control+s exec spotify
-bindsym $alt+Control+p exec p4v
+bindsym $alt+Control+p exec pidgin
+bindsym $alt+Control+g exec gimp
+bindsym $alt+Control+4 exec p4v
 
 # Screen blue-blocker
 bindsym $win+Shift+n exec redshift -O 3500K # Set to daytime display
@@ -245,17 +252,26 @@ bindsym $win+Shift+t exec ~/shares/code/bin/killall-tabs
 ## Assignments
 ###
 
-assign [class="Evolution"] 5
-assign [class="Pidgin"] 2
+assign [class="Evolution"] → ✉
+assign [class="Pidgin"] → 
+assign [class="chromium"] → 
+assign [class="P4V"] → ✔
 
+# gimp
+assign [class="Gimp"] → ✎
+for_window [title="GIMP Startup"] move workspace gimp
+for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
+
+for_window [class="Arandr"]      floating enable
+for_window [instance="Download"] floating enable
 
 
 #####
 ## Startup
 ###
+
 exec --no-startup-id nitrogen --restore # background image
 exec xscreensaver -no-splash
-exec .screenlayout/hp-zbook.sh
 #exec redshift -l 39.72712:-104.980913 -b 1.0:0.5 # Setup display
 exec redshift-gtk
 exec pidgin

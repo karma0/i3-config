@@ -10,7 +10,7 @@ import os
 
 from keyring.backends.SecretService import Keyring
 
-from i3pystatus import Status
+from i3pystatus import Status, Module, IntervalModule
 
 
 CONFIG_FILE = f"{os.environ['HOME']}/.i3/status.conf.json"
@@ -34,6 +34,28 @@ def get_wifi_devs():
         return w.interfaces()
     except:
         return []
+
+
+class RestartReminder(IntervalModule):
+    settings = required = ()
+
+    def run(self):
+        if os.path.exists("/lib/modules/" + os.uname().release):
+            self.output = None
+        else:
+            self.output = {
+                "full_text": "Reboot required!",
+                "color": "#FF3333",
+            }
+
+
+class ShutdownButton(Module):
+    output = {
+        "full_text": "\uF3A9",
+    }
+    def on_leftclick(self):
+        import subprocess
+        subprocess.Popen(["dmenu_runstate"])
 
 
 class Config:
@@ -69,6 +91,9 @@ class Bar:
         self.entities = []
 
         self.bar = Status(standalone=True)
+
+        self.bar.register(RestartReminder())
+        self.bar.register(ShutdownButton())
 
         def gen_ent(e, itr):
             for i in itr:
