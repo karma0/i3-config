@@ -50,17 +50,29 @@ bindsym $win+Next focus down
 bindsym $win+Prior focus up
 bindsym $win+End focus right
 
-# alternatively, you can use the cursor keys:
+# using the cursor keys:
 bindsym $win+Left focus left
 bindsym $win+Down focus down
 bindsym $win+Up focus up
 bindsym $win+Right focus right
+
+# using the vim keys:
+bindsym $win+y focus left
+bindsym $win+n focus down
+bindsym $win+e focus up
+bindsym $win+o focus right
 
 # move focused window
 bindsym $win+Shift+Home move left
 bindsym $win+Shift+Next move down
 bindsym $win+Shift+Prior move up
 bindsym $win+Shift+End move right
+
+# using the vim keys:
+bindsym $win+Shift+y move left
+bindsym $win+Shift+n move down
+bindsym $win+Shift+e move up
+bindsym $win+Shift+o move right
 
 # alternatively, you can use the cursor keys:
 bindsym $win+Shift+Left move left
@@ -142,11 +154,11 @@ bindsym $win+Control+Right workspace next
 bindsym $win+Control+Left workspace prev
 
 # reload the configuration file
-bindsym $win+Shift+c reload
+bindsym $win+Shift+Control+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Control+$alt+r restart
 # exit i3 (logs you out of your X session)
-bindsym $win+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $win+Shift+Control+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # set screen brightness
 bindsym $win+Shift+Control+1 exec "xrandr --output eDP-1 --brightness 0.2"
@@ -237,7 +249,7 @@ bar {
 
 set $WSW 11: 
 set $WSC 12: 
-set $WSE 13: ✉
+set $WSM 13: ✉
 set $WSP 14: ✔
 set $WSG 15: ✎
 
@@ -251,21 +263,29 @@ bindsym $alt+Control+4 exec p4v
 # switch to workspace
 bindsym $win+w workspace $WSW
 bindsym $win+c workspace $WSC
-bindsym $win+e workspace $WSE
+bindsym $win+m workspace $WSM
 bindsym $win+p workspace $WSP
 bindsym $win+g workspace $WSG
 
+# move focused container to workspace
+bindsym $win+Shift+w move container to workspace $WSW
+bindsym $win+Shift+c move container to workspace $WSC
+bindsym $win+Shift+m move container to workspace $WSM
+bindsym $win+Shift+p move container to workspace $WSP
+bindsym $win+Shift+g move container to workspace $WSG
+
 # Screen blue-blocker
-bindsym $win+Shift+n exec redshift -O 3500K # Set to daytime display
+bindsym $win+Shift+l exec redshift -O 3500K # Set to daytime display
 bindsym $win+Shift+d exec redshift -x # Set to nighttime display
 
 # kill chrome tabs
 bindsym $win+Shift+t exec ~/shares/code/bin/killall-tabs
 
 # Aop/desktop customization
+assign [class="Firefox"] → $WSW
 assign [class="Chromium"] → $WSW
 assign [class="Pidgin"] → $WSC
-assign [class="Evolution"] → $WSE
+assign [class="Evolution"] → $WSM
 assign [class="P4V"] → $WSP
 
 # gimp
