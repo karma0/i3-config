@@ -1,6 +1,4 @@
 # i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $win Mod4
 set $alt Mod1
@@ -231,13 +229,31 @@ bar {
   strip_workspace_numbers yes
 }
 
-# Applications
+
+
+#####
+## Applications
+###
+
+set $WSW 11: 
+set $WSC 12: 
+set $WSE 13: ✉
+set $WSP 14: ✔
+set $WSG 15: ✎
+
 bindsym $alt+Control+f exec firefox
 bindsym $alt+Control+c exec chromium
 bindsym $alt+Control+s exec spotify
 bindsym $alt+Control+p exec pidgin
 bindsym $alt+Control+g exec gimp
 bindsym $alt+Control+4 exec p4v
+
+# switch to workspace
+bindsym $win+w workspace $WSW
+bindsym $win+c workspace $WSC
+bindsym $win+e workspace $WSE
+bindsym $win+p workspace $WSP
+bindsym $win+g workspace $WSG
 
 # Screen blue-blocker
 bindsym $win+Shift+n exec redshift -O 3500K # Set to daytime display
@@ -246,16 +262,11 @@ bindsym $win+Shift+d exec redshift -x # Set to nighttime display
 # kill chrome tabs
 bindsym $win+Shift+t exec ~/shares/code/bin/killall-tabs
 
-
-#####
-## Assignments
-###
-
 # Aop/desktop customization
-assign [class="Evolution"] → ✉
-assign [class="Pidgin"] → 
-assign [class="Chromium"] → 
-assign [class="P4V"] → ✔
+assign [class="Chromium"] → $WSW
+assign [class="Pidgin"] → $WSC
+assign [class="Evolution"] → $WSE
+assign [class="P4V"] → $WSP
 
 # gimp
 assign [class="Gimp"] → ✎
