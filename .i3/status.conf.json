@@ -2,30 +2,38 @@
   "layouts": {
 
     "laptop": [
+      "shutdown_button",
+      "restart_reminder",
       "clock",
       "mem_bar",
       "battery",
       "load",
       "cpu_usage_graph",
       "disk",
-      "runwatch",
+      "network",
       "alsa",
       "now_playing",
       "pomodoro"
     ],
 
     "bottom_left": [
+      "shutdown_button",
+      "restart_reminder",
       "alsa",
       "pomodoro"
     ],
 
     "bottom_right": [
+      "shutdown_button",
+      "restart_reminder",
       "clock",
       "weather",
       "pomodoro"
     ],
 
     "top_left": [
+      "shutdown_button",
+      "restart_reminder",
       "load",
       "temp",
       "cpu_usage_graph",
@@ -39,6 +47,8 @@
     ],
 
     "top_right": [
+      "shutdown_button",
+      "restart_reminder",
       "clock",
       "weather",
       "load",
@@ -56,16 +66,11 @@
   },
   "config": {
 
-    "clock": {
+    "alsa": {
       "color": "#E6E1CF",
-      "format": "%a %-d %b %X W%V"
-    },
-
-    "mem_bar": {
-      "color": "#B8CC52",
-      "alert_color": "#FF3333",
-      "multi_colors": "true",
-      "format": "^{used_mem_bar}"
+      "color_muted": "#FF3333",
+      "card": 0,
+      "format": "♪{volume}%"
     },
 
     "battery": {
@@ -85,9 +90,9 @@
       }
     },
 
-    "load": {
-      "color": "#B8CC52",
-      "critical_color": "#FF3333"
+    "clock": {
+      "color": "#E6E1CF",
+      "format": "%a %-d %b %X W%V"
     },
 
     "cpu_usage_graph": {
@@ -102,18 +107,20 @@
       "format": "{used}/{total}G [{avail}G]"
     },
 
-    "runwatch": {
-      "color_up": "#B8CC52",
-      "color_down": "#FF3333",
-      "name": "DHCP",
-      "path": "/run/dhcpcd-*.pid"
+    "load": {
+      "color": "#B8CC52",
+      "critical_color": "#FF3333"
     },
 
-    "alsa": {
-      "color": "#E6E1CF",
-      "color_muted": "#FF3333",
-      "card": 0,
-      "format": "♪{volume}%"
+    "mem_bar": {
+      "color": "#B8CC52",
+      "alert_color": "#FF3333",
+      "multi_colors": "true",
+      "format": "^{used_mem_bar}"
+    },
+
+    "network": {
+      "format_up": "{v4cidr}"
     },
 
     "now_playing": {
@@ -133,19 +140,31 @@
       "short_break_count": 3
     },
 
-    "weather": {
-      "location_code": "80203",
-      "format": "Denver {current_temp}",
-      "units": "imperial",
-      "interval": 300
+    "restart_reminder": {
+      "full_text": "Reboot required!",
+      "color": "#FF3333"
+    },
+
+    "runwatch": {
+      "color_up": "#B8CC52",
+      "color_down": "#FF3333",
+      "name": "DHCP",
+      "path": "/run/dhcpcd-*.pid"
+    },
+
+    "shutdown_button": {
+      "full_text": "\uF3A9"
     },
 
     "temp": {
       "format": "{temp:.0f}°C"
     },
 
-    "network": {
-      "format_up": "{v4cidr}"
+    "weather": {
+      "location_code": "80203",
+      "format": "Denver {current_temp}",
+      "units": "imperial",
+      "interval": 300
     }
 
   }
