@@ -1,5 +1,3 @@
-from Xlib import display
-from Xlib.ext import randr
 import netifaces as net
 import re
 
