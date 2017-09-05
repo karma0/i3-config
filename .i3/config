@@ -32,8 +32,6 @@ floating_modifier $win
 # start a terminal
 bindsym $win+Return exec i3-sensible-terminal #lilyterm #
 
-bindsym $win+t exec emacs
-
 # kill focused window
 bindsym $win+Shift+q kill
 
