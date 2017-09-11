@@ -132,7 +132,7 @@ bindsym $win+6 workspace 6:６
 bindsym $win+7 workspace 7:７
 bindsym $win+8 workspace 8:８
 bindsym $win+9 workspace 9:９
-bindsym $win+0 workspace 0:１０
+bindsym $win+0 workspace 0:０
 
 # move focused container to workspace
 bindsym $win+Shift+1 move container to workspace 1:１
@@ -267,6 +267,10 @@ bindsym $win+c workspace $WSC
 bindsym $win+m workspace $WSM
 bindsym $win+p workspace $WSP
 bindsym $win+g workspace $WSG
+
+# blind-resolve
+bindsym $win+z exec "i3-msg workspace '1:１'; i3-msg workspace '$WSW'"
+bindsym $win+shift+z exec "i3-msg workspace '1:１'; i3-msg workspace '$WSW'"
 
 # move focused container to workspace
 bindsym $win+Shift+w move container to workspace $WSW
