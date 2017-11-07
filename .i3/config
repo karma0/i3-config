@@ -314,6 +314,9 @@ exec redshift-gtk
 exec pidgin
 exec evolution
 
+# In case we're in vmware
+exec vmware-user-suid-wrapper
+
 # Tap on touchpad
 exec xinput set-prop 11 287 1
 
