@@ -203,40 +203,8 @@ bindsym XF86AudioNext exec ncmpcpp next
 
 
 # Start i3bar to display a workspace bar
-
-## top-left
-#bar {
-#  status_command python3 ~/.i3/pystatus_top_left.py
-#  position top
-#  output $left_monitor
-#  tray_output none
-#}
-## bottom-left
-#bar {
-#  status_command python3 ~/.i3/pystatus_bottom_left.py
-#  position bottom
-#  output $left_monitor
-#  tray_output $left_monitor
-#  workspace_buttons yes
-#}
-## top-right
-##bar {
-##  status_command python3 ~/.i3/pystatus_top_right.py
-##  position top
-##  output $right_monitor
-##  #tray_output $right_monitor
-##}
-## bottom-right
-#bar {
-#  status_command python3 ~/.i3/pystatus_bottom_right.py
-#  position bottom
-#  output $right_monitor
-#  tray_output none
-#  workspace_buttons yes
-#}
-
 bar {
-  status_command ~/.i3/status.py laptop #i3status #~/bin/i3status.sh
+  status_command ~/.i3/status.py laptop #2> ~/.i3bar.out
   position bottom
   tray_output primary
   strip_workspace_numbers yes
@@ -309,8 +277,10 @@ for_window [instance="Download"] floating enable
 
 exec --no-startup-id nitrogen --restore # background image
 exec xscreensaver -no-splash
-#exec redshift -l 39.72712:-104.980913 -b 1.0:0.5 # Setup display
-exec redshift-gtk
+
+# Filter blue screen in the evening
+exec redshift
+
 exec pidgin
 exec evolution
 
@@ -318,7 +288,7 @@ exec evolution
 exec vmware-user-suid-wrapper
 
 # Tap on touchpad
-exec xinput set-prop 11 287 1
+exec ~/.i3/fix_touchpad.sh
 
 # Composite
 exec compton -b
