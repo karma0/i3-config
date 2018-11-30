@@ -116,6 +116,9 @@ bindsym $win+d focus child
 # Xscreensaver
 bindsym $alt+Control+o exec xscreensaver-command -lock
 
+# Reload nitrogen
+bindsym $alt+Control+n exec nitrogen --restore
+
 # scrot & gimp - root (screenshot)
 bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
