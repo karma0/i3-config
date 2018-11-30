@@ -114,7 +114,7 @@ bindsym $win+a focus parent
 bindsym $win+d focus child
 
 # Xscreensaver
-#bindsym $alt+Control+l exec xscreensaver-command -lock
+bindsym $alt+Control+o exec xscreensaver-command -lock
 
 # scrot & gimp - root (screenshot)
 bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
