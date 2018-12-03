@@ -115,7 +115,7 @@ bindsym $win+a focus parent
 bindsym $win+d focus child
 
 # Xscreensaver
-#bindsym $alt+Control+l exec xscreensaver-command -lock
+bindsym $alt+Control+o exec xscreensaver-command -lock
 
 # Reload nitrogen
 bindsym $alt+Control+n exec nitrogen --restore
