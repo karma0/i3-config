@@ -24,14 +24,16 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 font pango:Source Code Pro Medium 7
 
 #bindsym $alt+Control+Shift+a exec xkbcomp -w 0 ~/.xkbmap.qwerty $DISPLAY
-bindsym $alt+Control+Shift+a exec setxkbmap -layout us -variant intl
+bindsym $alt+Control+Shift+a exec setxkbmap -layout us # -variant intl
 bindsym $alt+Control+a exec xmodmap ~/.Xmodmap
 
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
 
 # start a terminal
-bindsym $win+Return exec i3-sensible-terminal #lilyterm #
+#bindsym $win+Return exec i3-sensible-terminal
+#bindsym $win+Return exec lilyterm
+bindsym $win+Return exec alacritty
 
 # kill focused window
 bindsym $win+Shift+q kill
@@ -225,12 +227,16 @@ set $WSC 12: 
 set $WSM 13: ✉
 set $WSP 14: ✔
 set $WSG 15: ✎
+set $WSB 16: ◽
 
 bindsym $alt+Control+f exec firefox
-bindsym $alt+Control+c exec chromium
+bindsym $alt+Control+c exec vivaldi-stable
+#bindsym $alt+Control+c exec google-chrome
+#bindsym $alt+Control+c exec chromium
 bindsym $alt+Control+s exec spotify
-bindsym $alt+Control+p exec pidgin
+bindsym $alt+Control+d exec discord
 bindsym $alt+Control+g exec gimp
+bindsym $alt+Control+b exec blender
 bindsym $alt+Control+4 exec p4v
 
 # switch to workspace
@@ -239,6 +245,7 @@ bindsym $win+c workspace $WSC
 bindsym $win+m workspace $WSM
 bindsym $win+p workspace $WSP
 bindsym $win+g workspace $WSG
+bindsym $win+b workspace $WSB
 
 # blind-resolve
 bindsym $win+z exec "i3-msg workspace '1:１'; i3-msg workspace '$WSW'"
@@ -250,6 +257,7 @@ bindsym $win+Shift+c move container to workspace $WSC
 bindsym $win+Shift+m move container to workspace $WSM
 bindsym $win+Shift+p move container to workspace $WSP
 bindsym $win+Shift+g move container to workspace $WSG
+bindsym $win+Shift+b move container to workspace $WSB
 
 # Screen blue-blocker
 bindsym $win+Shift+l exec redshift -O 3500K # Set to daytime display
@@ -261,9 +269,15 @@ bindsym $win+Shift+t exec ~/shares/code/bin/killall-tabs
 # Aop/desktop customization
 assign [class="Firefox"] → $WSW
 assign [class="Chromium"] → $WSW
-assign [class="Pidgin"] → $WSC
+assign [class="Slack"] → $WSC
+assign [class="Discord"] → $WSC
 assign [class="Evolution"] → $WSM
 assign [class="P4V"] → $WSP
+
+# blender
+assign [class="Blender"] → ◽
+for_window [title="Blender Startup"] move workspace ◽
+#for_window [window_role="blender-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
 
 # gimp
 assign [class="Gimp"] → ✎
@@ -290,6 +304,9 @@ exec evolution
 
 # In case we're in vmware
 exec vmware-user-suid-wrapper
+
+# Run streamdeck
+exec streamdeck
 
 # Tap on touchpad
 exec ~/.i3/fix_touchpad.sh
